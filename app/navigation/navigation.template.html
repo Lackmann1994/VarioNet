@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="navigation/navigation.template.css" />
+<img class="logo" src='img/logo.JPG' alt="logo"/>
+<div>
+     <!--TODO load image from database -->
+    <div id="nav">
+        <a href="#!main" ><translation word="overview"></translation></a>
+        <a href="#!client_overview" ><translation word="client_overview"></translation></a>
+        <a href="#!client_create" ><translation word="client_create"></translation></a>
+        <a href="#!system_overview" ><translation word="system_overview"></translation></a>
+        <a href="#!system_create" ><translation word="system_create"></translation></a>
+        <!--<a href="#!main" >dummy</a>-->
+        <!--<a href="#!main" >dummy</a>-->
+        <!--<a href="#!main" >dummy</a>-->
+    </div>
+    <div id="session">
+        <span><translation word="logged_as"></translation></span>
+        <span><translation word="email"></translation></span>
+        <span><translation word="last_login"></translation></span>
+    </div>
+    <div id="logout">
+        <a href="#!" ng-click="$ctrl.logout()"><translation word="logout"></translation></a>
+        <select-language></select-language>
+    </div>
+</div>

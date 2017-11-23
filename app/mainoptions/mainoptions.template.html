@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="mainoptions/mainoptions.template.css"/>
+
+
+<button ng-click="$ctrl.logcontext()">log</button>
+
+</maincontainer>
+<h3>
+    <translation word="client"></translation>
+</h3>
+<table>
+    <tr ng-repeat="filter in $ctrl.clientfilters">
+        <td>
+            <translation word="{{filter}}"></translation>
+            :
+        </td>
+        <td><input type="text" ng-model="$ctrl.client[filter]" ng-change="$ctrl.filtered = true"></td>
+    </tr>
+</table>
+
+<h3>
+    <translation word="system"></translation>
+</h3>
+<table>
+    <tr ng-repeat="filter in $ctrl.systemfilters">
+        <td>
+            <translation word="{{filter}}"></translation>
+            :
+        </td>
+        <td><input type="text" ng-model="$ctrl.system[filter]" ng-change="$ctrl.filtered = true"></td>
+    </tr>
+</table>
+
+
+<button ng-click="$ctrl.removeFilter()">remove filter</button>
+
+<button id="show_map" ng-click="$ctrl.toggleMap()"></button>

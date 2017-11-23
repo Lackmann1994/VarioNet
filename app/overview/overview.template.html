@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="overview/overview.template.css" />
+
+
+
+
+
+
+
+<map ng-show="$ctrl.options.map"></map>
+
+
+
+
+<div id="tree" ng-show="!$ctrl.options.map">
+    <button ng-click="$ctrl.alertclients()">log</button>
+    <ul class="tree">
+        <li ng-repeat="client in $ctrl.clients" ng-include="'clientsTree'" ng-show="!$ctrl.options.filtered"></li>
+        <li ng-repeat="client in $ctrl.clientsList
+         | filter:{firstname: $ctrl.options.client.firstname}
+         | filter:{lastname: $ctrl.options.client.lastname}
+         | filter:{email: $ctrl.options.client.email}
+         | filter:{street: $ctrl.options.client.street}
+         | filter:{stret_nr: $ctrl.options.client.stret_nr}
+         | filter:{postcode: $ctrl.options.client.postcode}
+         | filter:{town: $ctrl.options.client.town}
+         | filter:{region: $ctrl.options.client.region}
+         | filter:{number: $ctrl.options.client.number}
+         " ng-show="$ctrl.options.filtered">
+            <form class="client">
+                <button class="linkbutton">{{client.firstname}} {{client.lastname}}</button>
+            </form>
+            <input type="checkbox" checked/>
+            <ul ng-if="client.clients.length > 0 || client.systems.length > 0" >
+                <li ng-repeat="system in client.systems
+                    | filter:{ip_address: $ctrl.options.system.ip_address}
+                    | filter:{client_id: $ctrl.options.system.client_id}
+                    | filter:{status: $ctrl.options.system.status}
+                    | filter:{email: $ctrl.options.system.email}
+                    | filter:{street: $ctrl.options.system.street}
+                    | filter:{street_nr: $ctrl.options.system.street_nr}
+                    | filter:{postcode: $ctrl.options.system.postcode}
+                    | filter:{town: $ctrl.options.system.town}
+                    | filter:{region: $ctrl.options.system.region}
+                    | filter:{number: $ctrl.options.system.number}
+                ">
+                    <form class="system">
+                        <button class="linkbutton">{{system.ip_address}}</button>
+                    </form>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+    <script type="text/ng-template" id="clientsTree">
+        <form class="client">
+            <button class="linkbutton">{{client.firstname}} {{client.lastname}}</button>
+        </form>
+        <input type="checkbox" checked/>
+        <ul ng-if="client.clients.length > 0 || client.systems.length > 0">
+            <li ng-repeat="system in client.systems">
+                <form class="system">
+                    <button class="linkbutton">{{system.ip_address}}</button>
+                </form>
+            </li>
+            <li ng-repeat="client in client.clients | orderBy:'client.firstname'" ng-include="'clientsTree'"></li>
+        </ul>
+    </script>

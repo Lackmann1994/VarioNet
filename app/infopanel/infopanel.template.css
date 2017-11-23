@@ -1,0 +1,10 @@
+
+
+infopanel{
+    outline:3px solid #eeeeee;
+    position: fixed;
+    top: 0.5%;
+    left: 80%;
+    width: 19.5%;
+    height: 99%;
+}

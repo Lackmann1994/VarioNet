@@ -1,0 +1,58 @@
+<!doctype html>
+<html ng-app="App">
+<head>
+    <meta charset="utf-8">
+    <title>VarioNet</title>
+    <link rel="stylesheet" href="app.css"/>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQpbdAqpNTZC4Dl1-tvt6Z0zTPc0EZl1Q&libraries=places"></script><!-- key registered on daniellackmann@yahoo.de -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OverlappingMarkerSpiderfier/1.0.3/oms.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.min.js"></script>
+    <script src="app.module.js"></script>
+
+    <script src="map/map.module.js"></script>
+    <script src="map/map.component.js"></script>
+    <script src="map/map.service.js"></script>
+
+    <script src="route/route.module.js"></script>
+    <script src="route/route.config.js"></script>
+    <script src="phone-list/phone-list.module.js"></script>
+    <script src="phone-list/phone-list.component.js"></script>
+    <script src="select-language/select-language.module.js"></script>
+    <script src="select-language/select-language.component.js"></script>
+    <script src="translation/translation.module.js"></script>
+    <script src="translation/translation.component.js"></script>
+    <script src="communicate/communicate.module.js"></script>
+    <script src="communicate/communicate.service.js"></script>
+    <script src="login/login.module.js"></script>
+    <script src="login/login.component.js"></script>
+    <script src="navigation/navigation.module.js"></script>
+    <script src="navigation/navigation.component.js"></script>
+    <script src="optionpanel/optionpanel.module.js"></script>
+    <script src="optionpanel/optionpanel.component.js"></script>
+    <script src="infopanel/infopanel.module.js"></script>
+    <script src="infopanel/infopanel.component.js"></script>
+    <script src="maincontainer/maincontainer.module.js"></script>
+    <script src="maincontainer/maincontainer.component.js"></script>
+    <script src="overview/overview.module.js"></script>
+    <script src="overview/overview.component.js"></script>
+    <script src="treestorage/treestorage.module.js"></script>
+    <script src="treestorage/treestorage.service.js"></script>
+    <script src="mainoptions/mainoptions.module.js"></script>
+    <script src="mainoptions/mainoptions.componenets.js"></script>
+    <script src="context/context.module.js"></script>
+    <script src="context/context.service.js"></script>
+</head>
+<body>
+
+<ng-view></ng-view>
+
+
+
+
+
+
+</body>
+</html>

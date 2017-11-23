@@ -1,0 +1,9 @@
+maincontainer {
+    outline: 3px solid #eeeeee;
+    position: fixed;
+    top: 15.5%;
+    left: 20%;
+    width: 59.5%;
+    height: 84%;
+    overflow: auto;
+}

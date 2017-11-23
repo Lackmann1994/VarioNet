@@ -1,0 +1,91 @@
+navigation{
+    /*outline:3px solid #f3f1f1;*/
+    position: fixed;
+    top: 0.5%;
+    left: 0.5%;
+    width: 79%;
+    height: 14%;
+}
+
+navigation>img{
+    outline:3px solid #eeeeee;
+    position: fixed;
+    top: 0.5%;
+    left: 0.5%;
+    width: 19%;
+    height: 14%;
+}
+
+navigation>div{
+    outline:3px solid #eeeeee;
+    position: fixed;
+    top: 0.5%;
+    left: 20%;
+    width: 59.5%;
+    height: 14%;
+}
+
+navigation #session{
+    /*outline:1px solid #ff0000;*/
+    position: fixed;
+    top: 0.5%;
+    left: 35%;
+    width: 37%;
+    height: 14%;
+}
+
+navigation #nav{
+    /*outline:1px solid #ff0000;*/
+    position: fixed;
+    top: 0.5%;
+    left: 20%;
+    width: 15%;
+    height: 14%;
+    overflow-y: auto
+}
+
+navigation #logout{
+    /*outline:1px solid #ff0000;*/
+    position: fixed;
+    top: 0.5%;
+    left: 72%;
+    width: 7.5%;
+    height: 14%;
+}
+
+navigation span{
+    margin: 2px;
+    padding: 2px;
+    display: block;
+    /*background-color: #eeeeee;*/
+    color: black;
+}
+
+navigation a:link, navigation a:visited{
+    text-align: center;
+    text-decoration: none;
+    margin: 2px;
+    padding: 2px;
+    display: block;
+    background-color: #4CAF50;
+    color: white;
+}
+
+navigation select-language{
+    margin: 2px;
+    padding: 2px;
+    display: block;
+    background-color: #4CAF50;
+    color: white;
+    border:none;
+}
+
+navigation select-language>select{
+    width: 99%;
+    color: inherit;
+    background: inherit;
+}
+
+navigation a:hover, navigation a:active{
+background-color: red;
+}
