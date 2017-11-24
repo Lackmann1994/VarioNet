@@ -7,22 +7,23 @@ component('login', {
     templateUrl: 'login/login.template.html',
     controller: ['$http', '$location',
         function loginController($http, $location) {
+            this.debug = function () {
+                console.log(this.captcha);
+            }
             this.error = 'errorr'
             this.login = function() {//TODO remember_me TODO forgot_password
-                //validate
                 var data = $.param({
                     email : this.email,
                     password : this.password,
-                    captcha_code : this.captcha_code
+                    captcha : this.captcha
                 });
-
                 var config = {
                     headers : {
                         'Content-Type' : 'application/x-www-form-urlencoded;charset=utf-8;'
                     }
                 };
                 $http.post('php/validate_login.php', data, config).then(function(response) {
-                // console.log(this.error);
+                    console.log(JSON.stringify(response,0,2));
 
                     if (response.data.error_code == 0){
                         console.log('auth successful');
@@ -33,7 +34,6 @@ component('login', {
                         $location.path('/demo');
                     }
                 });
-                document.getElementById('captcha').src = 'securimage/securimage_show.php?' + Math.random()
             };
         }]
 });

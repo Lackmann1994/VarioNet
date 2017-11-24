@@ -10,13 +10,8 @@ angular.module('overview').component('overview', {
             this.isArray = angular.isArray;
             this.clients = treestorage.get_clients();
             this.clientsList = treestorage.get_clientsList()
-            // this.clientsFlat = treestorage.get_clients_flat();
             this.alertclients = function () {
-                // console.log('json: ');
                 console.log('json: ' + JSON.stringify(this.clientsList, null, 4));
-                // console.log('json: ' + JSON.stringify(this.clients,null,4));
-                // // console.log('json: ' + JSON.stringify(this.options,null,4));
-                // console.log('length: ' + angular.equals(this.options, {}));
 
 
 

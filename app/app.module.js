@@ -14,5 +14,6 @@ angular.module('App', [
     'mainoptions',
     'overview',
     'context',
-    'map'
+    'map',
+    'vcRecaptcha'
 ]);

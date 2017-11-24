@@ -34,7 +34,7 @@ component('translation', {
                 x.innerHTML = x[x.language][$attrs.word];
                 return;
             }
-            $http.get('translate.php?lang='+ x.language +'&word='+ $attrs.word).then(function(response) {
+            $http.get('php/translate.php?lang='+ x.language +'&word='+ $attrs.word).then(function(response) {
                 switch (parseInt(response.data.error_code)){
                     case 0:
                         x[x.language][$attrs.word] = response.data.data;

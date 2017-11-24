@@ -8,34 +8,18 @@
         <img src="img/client.svg" alt="Avatar" class="avatar">
     </div>
 
-    <div class="container">
-
-        <label><b><translation word="name"></translation></b></label>
+        <label><translation word="name"></translation></label>
         <input trans id="email" type="text"  ng-model="$ctrl.email" required>
 
-        <label><b><translation word="password"></translation></b></label>
+        <label><translation word="password"></translation></label>
         <input trans id="password" type="password" ng-model="$ctrl.password" required>
 
         <br>
         <div style="display: block; overflow: hidden">
-            <div style="float: left">
-                <img class="captcha" id="captcha" src="securimage/securimage_show.php" alt="CAPTCHA Image" />
-                <div>
-                    <object type="application/x-shockwave-flash" data="/securimage/securimage_play.swf?audio_file=/securimage/securimage_play.php&amp;bgColor1=%23fff&amp;bgColor2=%23fff&amp;iconColor=%23777&amp;borderWidth=1&amp;borderColor=%23000" width="19" height="19">
-                        <param name="movie" value="/securimage/securimage_play.swf?audio_file=/securimage/securimage_play.php&amp;bgColor1=%23fff&amp;bgColor2=%23fff&amp;iconColor=%23777&amp;borderWidth=1&amp;borderColor=%23000&" />
-                    </object>
-                    <img  width="19" height="19" onclick="document.getElementById('captcha').src = 'securimage/securimage_show.php?' + Math.random(); return false" src="securimage/images/refresh.png" alt="[Different Image]"/>
-                </div>
-            </div>
-            <div style="overflow: hidden">
-            <span id="error" style="margin-left: 5%" class="error">
-              <p>{{$ctrl.error}}</p>
-                <!--TODO-->
-            </span>
-            </div>
+        <div vc-recaptcha
+             key="'6LcGNDoUAAAAAM6MBt_APekc0isUcLNxPypJck3J'"
+             ng-model="$ctrl.captcha">
         </div>
-        <label><b><translation word="captcha"></translation></b></label>
-        <input id="captcha_code" type="text"ng-model="$ctrl.captcha_code" size="10" maxlength="6" required=""/>
         <input type="submit" value="submit" ng-click="$ctrl.login()">
         <input type="checkbox" checked="checked">
         <p style="display:inline"><translation word="remember_me"></translation></p>
@@ -43,3 +27,5 @@
     </div>
     <div class="container" style="background-color:#f1f1f1"></div>
 </form>
+
+<button ng-click="$ctrl.debug()"></button>
