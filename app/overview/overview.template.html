@@ -15,6 +15,7 @@
     <button ng-click="$ctrl.alertclients()">log</button>
     <ul class="tree">
         <li ng-repeat="client in $ctrl.clients" ng-include="'clientsTree'" ng-show="!$ctrl.options.filtered"></li>
+        <!--<li ng-repeat="client in treestorage.getClientTree" ng-include="'clientsTree'" ng-show="!$ctrl.options.filtered"></li>-->
         <li ng-repeat="client in $ctrl.clientsList
          | filter:{firstname: $ctrl.options.client.firstname}
          | filter:{lastname: $ctrl.options.client.lastname}

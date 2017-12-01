@@ -1,9 +1,7 @@
 <?php
 session_start();
 
-echo $_SERVER['DOCUMENT_ROOT'] . '\app\securimage\securimage.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . '\app\securimage\securimage.php';
-$securimage = new Securimage();
+echo 'this dummy page shows the current session variables';
 
 echo json_encode($_SESSION);
 /**

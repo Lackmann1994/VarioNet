@@ -3,6 +3,68 @@
 // Register `treestorage` service
 angular.module('treestorage').factory('treestorage', ['$http', '$q', 'map',
     function ($http, $q, map) {
+        console.log('now calling treestorage service');
+        var context = this;
+        this.debug = 'debug';
+        this.tree = 'aaaa';
+        this.clientTree = [];
+        this.clientList = [];
+        this.getClientTree = function () {
+            return context.clientTree;
+        }
+        this.getClientList = function () {
+            return context.clientList;
+        }
+        console.log(context.debug);
+        this.build_tree = function(clients, userid) {
+            console.log('context.build_tree');
+            $http.get(( userid ? 'php/get_client.php?userid=' + userid : 'php/get_client.php')).then(function (response1) {
+                if (response1.data.error_code != 0) {
+                    console.log('request 1 failed');
+                    return;
+                }
+                $http.get(( userid ? 'php/get_clients.php?userid=' + userid : 'php/get_clients.php')).then(function (response2) {
+                    if (response2.data.error_code != 0) {
+                        console.log('request 2 failed');
+                        return;
+                    }
+                    $http.get(( userid ? 'php/get_systems.php?userid=' + userid : 'php/get_systems.php')).then(function (response3) {
+                        if (response3.data.error_code != 0) {
+                            console.log('request 3 failed');
+                            return;
+                        }
+                        var client = response1.data.data;
+                        client.clients = [];
+                        client.systems = response3.data.data;
+                        clients.push(client);
+                        context.clientList.push(client);
+                        console.log('debug');
+/*                        map.addMarker2(
+                            client.latitude,
+                            client.longitude,
+                            client.firstname + ' ' + client.lastname,
+                            {
+                                url: 'img/client.svg',
+                            });
+                        for (var system in client.systems)
+                            map.addMarker2(
+                                client.systems[system].latitude,
+                                client.systems[system].longitude,
+                                client.systems[system].ip_address,
+                                {
+                                    url: 'img/system.svg',
+                                });*/
+                        for (var e in response2.data.data) {
+                            context.build_tree(client.clients, response2.data.data[e]);
+                        }
+                    });
+                });
+            });
+        }
+
+        this.build_tree(this.clientTree);
+
+
         var ready = false;
         var clients = [];
         var clientsList = [];
@@ -52,7 +114,7 @@ angular.module('treestorage').factory('treestorage', ['$http', '$q', 'map',
                             map.addMarker2(
                                 client.latitude,
                                 client.longitude,
-                                client.firstname + ' ' +client.lastname,
+                                client.firstname + ' ' + client.lastname,
                                 {
                                     url: 'img/client.svg',
                                 });
@@ -95,7 +157,10 @@ angular.module('treestorage').factory('treestorage', ['$http', '$q', 'map',
         return {
             get_clients: get_clients,
             get_clientsList: get_clientsList,
-            getDemo: 1
+            getDebug: this.debug,
+            getClientTree: this.clientTree,
+            getClientList: this.clientList,
+            getTree: this.tree
         }
     }
 ]);

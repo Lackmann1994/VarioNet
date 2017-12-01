@@ -3,7 +3,14 @@ module("route", ["ngRoute"])
 .config(function($routeProvider) {
     $routeProvider
         .when("/", {
-            templateUrl : "views/login.html"
+            templateUrl : "views/login.html",
+            resolve : {
+                logout: function ($http) {
+                    $http.get('php/logout.php').then(function (response) {
+                       console.log(JSON.stringify(response,0,4));
+                    });
+                }
+            }
         })
         .when("/main", {
             templateUrl : "views/main.html"
@@ -29,7 +36,7 @@ module("route", ["ngRoute"])
         .when("/phpdemo", {
             templateUrl : "php/demo.php"
         })
-        .otherwise("/demo", {
-            templateUrl : "views/demo.html"
+        .otherwise("/", {
+            templateUrl : "views/login.html"
         });
 });

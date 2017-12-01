@@ -20,22 +20,22 @@ try {
         throw new Exception("no_email", 1);
     if (!(isset($_REQUEST["password"]) && $_REQUEST["password"]))
         throw new Exception("no_password", 2);
-    if (!(isset($_REQUEST["captcha"]) && $_REQUEST["captcha"]))
-        throw new Exception("no_captcha", 3);
-
-    $postfields = array('secret' => '6LcGNDoUAAAAAJrACA0STA-nHOnIMFUvERneWR-h', 'response' => $_REQUEST["captcha"]);
-    $ch = curl_init('https://www.google.com/recaptcha/api/siteverify');
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $postfields);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $response = curl_exec($ch);
-    $response = json_decode($response, true);
-    curl_close($ch);
-
-    if($response['success'] != 'true'){
-        $return->data = $response;
-        throw new Exception('captcha_error', 6);
-    }
+//    if (!(isset($_REQUEST["captcha"]) && $_REQUEST["captcha"]))
+//        throw new Exception("no_captcha", 3);
+//
+//    $postfields = array('secret' => '6LcGNDoUAAAAAJrACA0STA-nHOnIMFUvERneWR-h', 'response' => $_REQUEST["captcha"]);
+//    $ch = curl_init('https://www.google.com/recaptcha/api/siteverify');
+//    curl_setopt($ch, CURLOPT_POST, 1);
+//    curl_setopt($ch, CURLOPT_POSTFIELDS, $postfields);
+//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//    $response = curl_exec($ch);
+//    $response = json_decode($response, true);
+//    curl_close($ch);
+//
+//    if($response['success'] != 'true'){
+//        $return->data = $response;
+//        throw new Exception('captcha_error', 6);
+//    }
 
 
     $database_name = 'varionet';
@@ -53,13 +53,7 @@ try {
 
     if ($result) {
         if (password_verify($_REQUEST['password'], $result['password_hash'])) {
-//      if ($securimage -> check($_REQUEST['captcha_code']) == true) {
             $_SESSION['userid'] = $result['id'];
-//      } else {
-//          $return -> data = $_SESSION;
-//          throw new Exception(json_encode($_SESSION), 6);
-//          throw new Exception("wrong_captcha", 6);
-//      }
         } else {
             throw new Exception("wrong_password", 5);
         }
